@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { NavBar } from "@/components/NavBar";
 import { EcranSelection } from "@/components/coach/EcranSelection";
 import { TableauBord } from "@/components/coach/TableauBord";
 import type { Programme, SelectionParams } from "@/lib/types";
@@ -50,15 +49,12 @@ export default function CoachPage() {
   };
 
   return (
-    <div className="min-h-screen">
-      <NavBar />
-      <main className="pb-12">
-        {etape === "selection" || !programme ? (
-          <EcranSelection onGenerer={genererSeance} loading={loading} />
-        ) : (
-          <TableauBord programme={programme} spotifyToken={spotifyToken} onRetour={retour} />
-        )}
-      </main>
+    <div className="py-2">
+      {etape === "selection" || !programme ? (
+        <EcranSelection onGenerer={genererSeance} loading={loading} />
+      ) : (
+        <TableauBord programme={programme} spotifyToken={spotifyToken} onRetour={retour} />
+      )}
     </div>
   );
 }
